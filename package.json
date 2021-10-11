@@ -1,6 +1,14 @@
 {
   "name": "webpack-v8-profile-plugin",
   "version": "1.0.0",
-  "main": "index.js",
-  "license": "MIT"
+  "main": "lib/index.js",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^4.4.3",
+    "@types/webpack": "^5.28.0"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "tsc -w --preserveWatchOutput"
+  }
 }
