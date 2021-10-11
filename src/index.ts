@@ -1,1 +1,3 @@
-export { V8ProfilePlugin } from './V8ProfilePlugin';
+import { HeapSamplingPlugin } from "./HeapSamplingPlugin";
+
+module.exports = HeapSamplingPlugin;
