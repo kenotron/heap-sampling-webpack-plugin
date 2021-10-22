@@ -1,0 +1,20 @@
+{
+  "name": "heap-sampling-webpack-plugin",
+  "entries": [
+    {
+      "date": "Fri, 22 Oct 2021 21:04:20 GMT",
+      "tag": "heap-sampling-webpack-plugin_v1.0.1",
+      "version": "1.0.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "kchau@microsoft.com",
+            "package": "heap-sampling-webpack-plugin",
+            "commit": "7587cc4d3af174713185ea13cefbc3e884797594",
+            "comment": "fixing the chrome-trace-events dep version"
+          }
+        ]
+      }
+    }
+  ]
+}
