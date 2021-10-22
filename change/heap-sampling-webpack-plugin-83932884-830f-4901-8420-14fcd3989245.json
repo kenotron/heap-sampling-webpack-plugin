@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixing the chrome-trace-events dep version",
+  "packageName": "heap-sampling-webpack-plugin",
+  "email": "kchau@microsoft.com",
+  "dependentChangeType": "patch"
+}
