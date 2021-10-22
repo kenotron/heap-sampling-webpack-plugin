@@ -4,7 +4,7 @@
   "main": "lib/index.js",
   "license": "MIT",
   "dependencies": {
-    "chrome-trace-event": "1.0.3"
+    "chrome-trace-event": "^1.0.3"
   },
   "devDependencies": {
     "typescript": "^4.4.3",

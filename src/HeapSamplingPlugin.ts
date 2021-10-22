@@ -40,7 +40,10 @@ export class HeapSamplingPlugin {
       const { outputPath } = this.options;
       const writeFile = promisify(fs.writeFile);
       const heapProfilerStopSampling = promisify(this.session.post.bind(this.session, "HeapProfiler.stopSampling"));
+      const heapProfilerDisable = promisify(this.session.post.bind(this.session, "HeapProfiler.disable"));
+      
       const { profile } = await heapProfilerStopSampling();
+      await heapProfilerDisable();
 
       if (/\/|\\/.test(outputPath)) {
         const dirPath = path.dirname(outputPath);
