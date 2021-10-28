@@ -50,7 +50,7 @@ export class HeapSamplingPlugin {
 
       if (/\/|\\/.test(outputPath)) {
         const dirPath = path.dirname(outputPath);
-        mkdirpSync(dirPath, { recursive: true });
+        mkdirpSync(fs, dirPath);
       }
 
       await writeFile(this.options.outputPath, JSON.stringify(profile));
