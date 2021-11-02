@@ -2,6 +2,21 @@
   "name": "heap-sampling-webpack-plugin",
   "entries": [
     {
+      "date": "Tue, 02 Nov 2021 22:18:17 GMT",
+      "tag": "heap-sampling-webpack-plugin_v1.1.0",
+      "version": "1.1.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "kchau@microsoft.com",
+            "package": "heap-sampling-webpack-plugin",
+            "commit": "72f96af81f61205b0f7ea2aea6af3964c78b0e20",
+            "comment": "changes node fs to the Webpack provided fs to track outputs"
+          }
+        ]
+      }
+    },
+    {
       "date": "Fri, 22 Oct 2021 21:04:20 GMT",
       "tag": "heap-sampling-webpack-plugin_v1.0.1",
       "version": "1.0.1",
