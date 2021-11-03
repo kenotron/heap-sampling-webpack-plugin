@@ -1,0 +1,7 @@
+{
+  "type": "minor",
+  "comment": "adding an option to skip heap profile and only capture max",
+  "packageName": "heap-sampling-webpack-plugin",
+  "email": "kchau@microsoft.com",
+  "dependentChangeType": "patch"
+}
