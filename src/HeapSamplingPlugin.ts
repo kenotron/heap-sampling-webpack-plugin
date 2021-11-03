@@ -6,6 +6,8 @@ import { mkdirpSync } from "webpack/lib/util/fs";
 
 export interface HeapSamplingPluginOptions {
   checkPeakMemory?: boolean;
+  checkPeakMemoryInterval?: number;
+  heapProfile?: boolean;
   outputPath?: string;
 }
 
@@ -24,6 +26,10 @@ export class HeapSamplingPlugin {
     if (!this.options.outputPath) {
       this.options.outputPath = "v8-heap-sample.heapprofile";
     }
+
+    if (typeof this.options.checkPeakMemoryInterval === "undefined") {
+      this.options.checkPeakMemoryInterval = 1000;
+    }
   }
 
   initializeMemoryChecker() {
@@ -34,7 +40,7 @@ export class HeapSamplingPlugin {
       if (heapTotal > this.peakMemory) {
         this.peakMemory = heapTotal;
       }
-    }, 1000);
+    }, this.options.checkPeakMemoryInterval);
 
     return () => peakMemoryInterval.unref();
   }
@@ -46,36 +52,40 @@ export class HeapSamplingPlugin {
 
     let disposeMemoryChecker: () => void;
 
-    if (this.options.checkPeakMemory) {
-      disposeMemoryChecker = this.initializeMemoryChecker();
-    }
-
     if (!this.options.outputPath) {
       this.options.outputPath = compiler.options.output.path;
     }
 
     compiler.hooks.beforeRun.tapPromise("HeapSamplingPlugin", async (_compiler) => {
-      const heapProfilerEnable = promisify(this.session.post.bind(this.session, "HeapProfiler.enable"));
-      const heapProfilerStartSampling = promisify(this.session.post.bind(this.session, "HeapProfiler.startSampling"));
-      await heapProfilerEnable();
-      await heapProfilerStartSampling();
+      if (this.options.heapProfile) {
+        const heapProfilerEnable = promisify(this.session.post.bind(this.session, "HeapProfiler.enable"));
+        const heapProfilerStartSampling = promisify(this.session.post.bind(this.session, "HeapProfiler.startSampling"));
+        await heapProfilerEnable();
+        await heapProfilerStartSampling();
+      }
+
+      if (this.options.checkPeakMemory) {
+        disposeMemoryChecker = this.initializeMemoryChecker();
+      }
     });
 
     compiler.hooks.afterEmit.tapPromise("HeapSamplingPlugin", async (stats) => {
-      const { outputPath } = this.options;
+      if (this.options.heapProfile) {
+        const { outputPath } = this.options;
 
-      const heapProfilerStopSampling = promisify(this.session.post.bind(this.session, "HeapProfiler.stopSampling"));
-      const heapProfilerDisable = promisify(this.session.post.bind(this.session, "HeapProfiler.disable"));
+        const heapProfilerStopSampling = promisify(this.session.post.bind(this.session, "HeapProfiler.stopSampling"));
+        const heapProfilerDisable = promisify(this.session.post.bind(this.session, "HeapProfiler.disable"));
 
-      const { profile } = await heapProfilerStopSampling();
-      await heapProfilerDisable();
+        const { profile } = await heapProfilerStopSampling();
+        await heapProfilerDisable();
 
-      if (/\/|\\/.test(outputPath)) {
-        const dirPath = path.dirname(outputPath);
-        mkdirpSync(fs, dirPath);
+        if (/\/|\\/.test(outputPath)) {
+          const dirPath = path.dirname(outputPath);
+          mkdirpSync(fs, dirPath);
+        }
+
+        await writeFile(this.options.outputPath, JSON.stringify(profile));
       }
-
-      await writeFile(this.options.outputPath, JSON.stringify(profile));
 
       if (this.options.checkPeakMemory) {
         logger.info(`Max memory usaged for webpack: ${(this.peakMemory / 1024 / 1024).toFixed(2)}MB`);
