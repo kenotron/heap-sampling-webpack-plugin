@@ -1,8 +1,16 @@
 # Change Log - heap-sampling-webpack-plugin
 
-This log was last generated on Tue, 02 Nov 2021 22:18:17 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Nov 2021 18:14:15 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.2.0
+
+Wed, 03 Nov 2021 18:14:15 GMT
+
+### Minor changes
+
+- adding an option to skip heap profile and only capture max (kchau@microsoft.com)
 
 ## 1.1.0
 

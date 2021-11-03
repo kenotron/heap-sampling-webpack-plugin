@@ -2,6 +2,21 @@
   "name": "heap-sampling-webpack-plugin",
   "entries": [
     {
+      "date": "Wed, 03 Nov 2021 18:14:15 GMT",
+      "tag": "heap-sampling-webpack-plugin_v1.2.0",
+      "version": "1.2.0",
+      "comments": {
+        "minor": [
+          {
+            "author": "kchau@microsoft.com",
+            "package": "heap-sampling-webpack-plugin",
+            "commit": "73a7b0d3813dab1de1573c096f83349b0a65f7ea",
+            "comment": "adding an option to skip heap profile and only capture max"
+          }
+        ]
+      }
+    },
+    {
       "date": "Tue, 02 Nov 2021 22:18:17 GMT",
       "tag": "heap-sampling-webpack-plugin_v1.1.0",
       "version": "1.1.0",
