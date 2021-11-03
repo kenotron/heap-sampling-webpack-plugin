@@ -2,6 +2,21 @@
   "name": "heap-sampling-webpack-plugin",
   "entries": [
     {
+      "date": "Wed, 03 Nov 2021 21:49:08 GMT",
+      "tag": "heap-sampling-webpack-plugin_v1.2.1",
+      "version": "1.2.1",
+      "comments": {
+        "patch": [
+          {
+            "author": "kchau@microsoft.com",
+            "package": "heap-sampling-webpack-plugin",
+            "commit": "4777c513dbf8499d04e4b3e6f938731c44aad7d1",
+            "comment": "fixing typo"
+          }
+        ]
+      }
+    },
+    {
       "date": "Wed, 03 Nov 2021 18:14:15 GMT",
       "tag": "heap-sampling-webpack-plugin_v1.2.0",
       "version": "1.2.0",

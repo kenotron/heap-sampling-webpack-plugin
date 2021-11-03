@@ -1,8 +1,16 @@
 # Change Log - heap-sampling-webpack-plugin
 
-This log was last generated on Wed, 03 Nov 2021 18:14:15 GMT and should not be manually modified.
+This log was last generated on Wed, 03 Nov 2021 21:49:08 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.2.1
+
+Wed, 03 Nov 2021 21:49:08 GMT
+
+### Patches
+
+- fixing typo (kchau@microsoft.com)
 
 ## 1.2.0
 
