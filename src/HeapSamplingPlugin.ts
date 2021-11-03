@@ -69,7 +69,7 @@ export class HeapSamplingPlugin {
       }
     });
 
-    compiler.hooks.afterEmit.tapPromise("HeapSamplingPlugin", async (stats) => {
+    compiler.hooks.done.tapPromise("HeapSamplingPlugin", async (stats) => {
       if (this.options.heapProfile) {
         const { outputPath } = this.options;
 
@@ -88,7 +88,7 @@ export class HeapSamplingPlugin {
       }
 
       if (this.options.checkPeakMemory) {
-        logger.info(`Max memory usaged for webpack: ${(this.peakMemory / 1024 / 1024).toFixed(2)}MB`);
+        logger.info(`Max memory used for webpack: ${(this.peakMemory / 1024 / 1024).toFixed(2)}MB`);
         disposeMemoryChecker();
       }
     });
