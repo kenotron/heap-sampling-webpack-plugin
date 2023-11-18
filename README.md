@@ -13,7 +13,7 @@ const HeapSamplingPlugin = require("heap-sampling-webpack-plugin");
 
 module.exports = {
   plugins: [
-    new HeapSamplingPlugin();
+    new HeapSamplingPlugin({ heapProfile: true );
   ]
 }
 ```
@@ -22,6 +22,9 @@ You may want to specify an option with this plugin:
 
 ```js
 new HeapSamplingPlugin({
-  outputPath: "/some/place/my.heapprofile"
+  outputPath: "/some/place/my.heapprofile",
+  checkPeakMemory: true,
+  checkPeakMemoryInterval: 30,
+  heapProfile: true
 })
 ```
