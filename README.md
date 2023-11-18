@@ -13,7 +13,7 @@ const HeapSamplingPlugin = require("heap-sampling-webpack-plugin");
 
 module.exports = {
   plugins: [
-    new HeapSamplingPlugin({ heapProfile: true );
+    new HeapSamplingPlugin({ heapProfile: true })
   ]
 }
 ```
