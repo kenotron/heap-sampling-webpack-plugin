@@ -4,11 +4,17 @@ import path from "path";
 import { promisify } from "util";
 import { mkdirpSync } from "webpack/lib/util/fs";
 
+export enum SupportedBundlers {
+  WEBPACK = "webpack",
+  RSPACK = "rspack"
+}
+
 export interface HeapSamplingPluginOptions {
   checkPeakMemory?: boolean;
   checkPeakMemoryInterval?: number;
   heapProfile?: boolean;
   outputPath?: string;
+  bundler?: SupportedBundlers;
 }
 
 export class HeapSamplingPlugin {
@@ -30,6 +36,10 @@ export class HeapSamplingPlugin {
     if (typeof this.options.checkPeakMemoryInterval === "undefined") {
       this.options.checkPeakMemoryInterval = 1000;
     }
+
+    if (this.options.bundler === undefined) {
+      this.options.bundler = SupportedBundlers.WEBPACK;
+    }
   }
 
   initializeMemoryChecker() {
@@ -46,7 +56,7 @@ export class HeapSamplingPlugin {
   }
 
   apply(compiler: Compiler): void {
-    const fs = compiler.intermediateFileSystem;
+    const fs = this.options.bundler === SupportedBundlers.RSPACK ? compiler.outputFileSystem : compiler.intermediateFileSystem;
     const logger = compiler.getInfrastructureLogger("heap-sampling-plugin");
     const writeFile = promisify(fs.writeFile);
 
