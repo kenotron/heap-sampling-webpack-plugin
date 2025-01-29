@@ -30,7 +30,6 @@ export class HeapSamplingPlugin {
     if (typeof this.options.checkPeakMemoryInterval === "undefined") {
       this.options.checkPeakMemoryInterval = 1000;
     }
-
   }
 
   initializeMemoryChecker() {
