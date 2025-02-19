@@ -46,7 +46,7 @@ export class HeapSamplingPlugin {
   }
 
   apply(compiler: Compiler): void {
-    const fs = compiler.intermediateFileSystem;
+    const fs = compiler.outputFileSystem;
     const logger = compiler.getInfrastructureLogger("heap-sampling-plugin");
     const writeFile = promisify(fs.writeFile);
 
