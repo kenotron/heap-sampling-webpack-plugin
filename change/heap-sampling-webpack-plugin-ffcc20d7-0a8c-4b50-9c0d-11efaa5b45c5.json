@@ -1,0 +1,7 @@
+{
+  "type": "patch",
+  "comment": "fixing the plugin to be rspack compatible",
+  "packageName": "heap-sampling-webpack-plugin",
+  "email": "kchau@microsoft.com",
+  "dependentChangeType": "patch"
+}
