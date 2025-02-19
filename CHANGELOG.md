@@ -1,8 +1,16 @@
 # Change Log - heap-sampling-webpack-plugin
 
-This log was last generated on Wed, 03 Nov 2021 21:49:08 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Feb 2025 19:41:34 GMT and should not be manually modified.
 
 <!-- Start content -->
+
+## 1.2.2
+
+Wed, 19 Feb 2025 19:41:34 GMT
+
+### Patches
+
+- fixing the plugin to be rspack compatible (kchau@microsoft.com)
 
 ## 1.2.1
 
